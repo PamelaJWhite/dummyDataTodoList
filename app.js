@@ -1,18 +1,42 @@
 // We'll pre-populate this array with a couple objects just so it's not undefined if your internet connection isn't working properly.
+console.log("working")
 
 let arrayOfTodos = [
     {
     "userId": 14,
     "id": 1,
     "title": "delectus aut autem",
-    "completed": false
+    "completed": false,
+    "superHeroName": "Wonder Woman"
 },
 {
     "userId": 20,
     "id": 2,
     "title": "delectus aut autem",
-    "completed": false
+    "completed": false,
+    "superHeroName": "BatMan"
 }]
+
+console.log(arrayOfTodos[0].title) 
+
+    let OL = document.getElementById("todo-list")
+   console.log(OL)
+  
+
+ 
+
+  function createLi(data) {
+      const listItem = document.createElement("LI")
+      console.log(listItem)
+      const text = document.createTextNode(data)
+      listItem.appendChild(text)
+      console.log(listItem)
+      OL.appendChild(listItem)
+  }
+
+
+//   console.log(createLi())
+
 
 const fetchTodos = () => {
     fetch('https://jsonplaceholder.typicode.com/todos')
@@ -25,5 +49,13 @@ const logTodos = () => {
 }
 
 const populateTodos = () => {
+for (let index = 0; index < arrayOfTodos.length; index++) {
+    const toDo = arrayOfTodos[index];
+    console.log(toDo)
+    // let listName = toDo.superHeroName + " " + toDo.id
+    let listName = `${toDo.superHeroName} ${toDo.id}`
 
+    createLi(listName)
+    
+}
 }
